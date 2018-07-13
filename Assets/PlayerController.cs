@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         MeshRenderer mr = GetComponent<MeshRenderer>();
-        mr.material.color = Color.blue;
+        mr.material.color = Color.yellow;
+	    
 	}
 	
 	// Update is called once per frame
