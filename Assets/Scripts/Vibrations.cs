@@ -7,8 +7,6 @@ public class Vibrations : MonoBehaviour {
 
     private int playerName;
     private ControllerButtons controller;
-    private int nudge;
-    private int target;
 
 	// Use this for initialization
 	void Start () {
@@ -18,23 +16,11 @@ public class Vibrations : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        detect();
-        if (selectionMade())
-        {
-            //pass to gameobject or game controller
-        }
+        nudge(controller.dpadValue());
     }
 
-    public void detect()
-    {
-         nudge = controller.dpadValue();
+    void nudge (int target){
+        //make something vibrate
     }
 
-    private bool selectionMade()
-    {
-        if (nudge != 0 && target != 0)
-            return true;
-        else
-            return false;
-    }
 }

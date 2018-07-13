@@ -8,12 +8,14 @@ public class ControllerButtons : MonoBehaviour {
 
     public int dpadValue()
     {
-        if (DpadLeft())
-            return 1;
         if (DpadUp())
-            return 2;
+            return 1;
         if (DpadRight())
+            return 2;
+        if (DpadDown())
             return 3;
+        if (DpadLeft())
+            return 4;
         return 0;
     }
 
