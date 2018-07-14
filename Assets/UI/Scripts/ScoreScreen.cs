@@ -20,6 +20,8 @@ public class ScoreScreen : MonoBehaviour {
     private GameObject banana_03;
     private GameObject banana_04;
 
+    public Game gameController;
+
     int[] winningPlayers = new int[] { 0, 0, 0, 0 };
 
     private void Awake()
@@ -35,11 +37,15 @@ public class ScoreScreen : MonoBehaviour {
         text_03 = panel_03.gameObject.transform.GetChild(3).gameObject.GetComponent<Text>();
         text_04 = panel_04.gameObject.transform.GetChild(3).gameObject.GetComponent<Text>();
 
-        displayResults(0, 48, 2, 52);
+        //   displayResults(0, 48, 2, 52);
+
+        Destroy(this.gameObject, 4);
     }
 
-    public void displayResults(int first_player = -1, int first_score = 0, int second_player = -1, int second_score = 0)
+    public void displayResults(int first_player = -1, int first_score = 0, int second_player = -1, int second_score = 0,
+                                int third_player = -1, int third_score = 0, int fourth_player = -1, int fourth_score = 0)
     {
+        Debug.Log("Displaying results!");
         switch(first_player)
         {
         default:
@@ -91,6 +97,65 @@ public class ScoreScreen : MonoBehaviour {
                 text_04.text = "+" + second_score.ToString();
                 break;
         }
+
+        switch (third_player)
+        {
+            default:
+                break;
+            case 0:
+                banana_01.GetComponent<Image>().enabled = true;
+                text_01.enabled = true;
+                text_01.text = "+" + third_score.ToString();
+                break;
+            case 1:
+                banana_02.GetComponent<Image>().enabled = true;
+                text_02.enabled = true;
+                text_02.text = "+" + third_score.ToString();
+                break;
+            case 2:
+                banana_03.GetComponent<Image>().enabled = true;
+                text_03.enabled = true;
+                text_03.text = "+" + third_score.ToString();
+                break;
+            case 3:
+                banana_04.GetComponent<Image>().enabled = true;
+                text_04.enabled = true;
+                text_04.text = "+" + third_score.ToString();
+                break;
+        }
+
+        switch (fourth_player)
+        {
+            default:
+                break;
+            case 0:
+                banana_01.GetComponent<Image>().enabled = true;
+                text_01.enabled = true;
+                text_01.text = "+" + fourth_score.ToString();
+                break;
+            case 1:
+                banana_02.GetComponent<Image>().enabled = true;
+                text_02.enabled = true;
+                text_02.text = "+" + fourth_score.ToString();
+                break;
+            case 2:
+                banana_03.GetComponent<Image>().enabled = true;
+                text_03.enabled = true;
+                text_03.text = "+" + fourth_score.ToString();
+                break;
+            case 3:
+                banana_04.GetComponent<Image>().enabled = true;
+                text_04.enabled = true;
+                text_04.text = "+" + fourth_score.ToString();
+                break;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        //       gameController.roundStarted = false;
+        gameController.showingScore = false;
+        Debug.Log("Score screen destroyed.");
     }
 
 }

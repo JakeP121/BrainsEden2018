@@ -9,10 +9,11 @@ public class Player : MonoBehaviour
     public bool isAlive = true;
 
     public int points = 0;
+    public int pot = 0;
 
     private Player target;
 
-    private bool debugging = true;
+    private bool debugging = false;
 
     /// <summary>
     /// Plays animation to show who the player aimed at
