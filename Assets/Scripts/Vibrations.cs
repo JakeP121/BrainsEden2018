@@ -103,15 +103,30 @@ public class Vibrations : MonoBehaviour {
         stickSelection.x = input[1];
 
         //Calculates which direction the joystick is going
-        //and returns a number to represent direction 
-        if(stickSelection.y > 0.5)
-            return 1;
-        if(stickSelection.y < -0.5)
-            return 2;
-        if(stickSelection.x > 0.5)
-            return 3;    
-        if(stickSelection.x < -0.5)
-            return 4;
+        //and returns a number to represent direction
+        if (!current.isLeft)
+        {
+            if(stickSelection.y > 0.5) //Player 3
+                return 3;
+            if(stickSelection.y < -0.5) //Player 1
+                return 1;
+            if(stickSelection.x > 0.5) //Player 2
+                return 2;    
+            if(stickSelection.x < -0.5) //Player 4
+                return 4;
+        }
+        else
+        {
+            if(stickSelection.y > 0.5) //Player 1
+                return 1;
+            if(stickSelection.y < -0.5) //Player 4
+                return 4;
+            if(stickSelection.x > 0.5) //Player 2
+                return 3;    
+            if(stickSelection.x < -0.5) //Player 4
+                return 2;
+        }
+
         
         return 0;
     }
