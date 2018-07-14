@@ -57,23 +57,25 @@ public class Game : MonoBehaviour {
     /// </summary>
     private void playRound()
     {
-        for (int i = 0; i < players.Count; i++)
+        List<Player> livingPlayers = getLivingPlayers();
+
+        for (int i = 0; i < livingPlayers.Count; i++)
             players[i].draw();
 
         StartCoroutine(wait(secondsBeforeFiring));
 
         // Roll for duds
-        for (int i = 0; i < players.Count; i++)
+        for (int i = 0; i < livingPlayers.Count; i++)
         {
             float rand = Random.Range(0.0f, 1.0f);
 
             if (rand <= gunAccuracy)
-                players[i].shoot(true);
+                livingPlayers[i].shoot(true);
             else
-                players[i].shoot(false);
+                livingPlayers[i].shoot(false);
         }
 
-        List<Player> livingPlayers = getLivingPlayers();
+        livingPlayers = getLivingPlayers();
 
         // OG 1-3 winners
         /*
@@ -95,11 +97,12 @@ public class Game : MonoBehaviour {
             livingPlayers[0].points += (pot / 2) + potDifference;
             livingPlayers[1].points += (pot / 2) - potDifference;
         }
-        else
+        else if (livingPlayers.Count >= 3)
         {
             for (int i = 0; i < livingPlayers.Count; i++)
                 livingPlayers[i].reset();
 
+            waitingForInput = true;
             return;
         }
 
@@ -130,9 +133,11 @@ public class Game : MonoBehaviour {
     /// <returns>True if all players have a target, else false.</returns>
     private bool playerTargetsSet()
     {
-        for (int i = 0; i < players.Count; i++)
+        List<Player> livingPlayers = getLivingPlayers();
+
+        for (int i = 0; i < livingPlayers.Count; i++)
         {
-            if (players[i].targetSet == false)
+            if (livingPlayers[i].targetSet == false)
                 return false;
         }
 
