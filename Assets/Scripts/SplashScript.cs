@@ -12,4 +12,9 @@ public class SplashScript : MonoBehaviour {
         text.text = name;
     }
 
+    private void Awake()
+    {
+        Destroy(this.gameObject, 4);
+    }
+
 }
