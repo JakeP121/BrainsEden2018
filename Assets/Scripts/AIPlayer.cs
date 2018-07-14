@@ -6,18 +6,11 @@ public class AIPlayer : MonoBehaviour {
 
     public List<Player> allPlayers;
 
-    public bool useAI = false;
-
     private Player player;
     
 	// Use this for initialization
 	void Start () {
         player = GetComponent<Player>();
-
-        if (useAI)
-            GetComponent<Vibrations>().enabled = false;
-        else
-            enabled = false;
 	}
 	
 	// Update is called once per frame
