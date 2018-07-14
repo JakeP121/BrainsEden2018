@@ -7,7 +7,7 @@ public class Game : MonoBehaviour {
     public List<Player> players = new List<Player>(); // All players in the game
 
     public int totalRounds = 5; // Rounds to play before the game ends.
-    private int round = 1; // The current round.
+    public int round = 1; // The current round.
 
     public float gunAccuracy = 0.5f; // 1 = 100% hit rate, 0 = 0% hit rate
 
@@ -15,12 +15,16 @@ public class Game : MonoBehaviour {
 
     public float secondsBeforeFiring = 3.0f; // The number of seconds between the players drawing and firing
 
-    private bool roundStarted = false; // Has a current round started? 
+    public bool roundStarted = false; // Has a current round started? 
     private bool waitingForInput = false; // Is the round waiting for player input? 
 
     private bool gameOver = false;
 
-    private bool debugging = true;
+    private bool debugging = false;
+
+    public GameObject splash_Score;
+
+    public bool showingScore = false;
 
     private bool[] hasDied = new bool[4];
 
@@ -35,7 +39,7 @@ public class Game : MonoBehaviour {
             gameOver = true;
         }
 
-        if (!roundStarted)
+        if (!roundStarted && !showingScore)
             startRound();
 
         if (playerTargetsSet())
@@ -86,18 +90,24 @@ public class Game : MonoBehaviour {
             int potDifference = Random.Range(-(pot / 100), pot / 100);
 
             livingPlayers[i].points += (pot / livingPlayers.Count) + potDifference;
+            livingPlayers[i].pot = (pot / livingPlayers.Count) + potDifference;
         }
         */
-        
+
         // New 1-2 winners (3-4 surviving replays)
         if (livingPlayers.Count == 1)
+        {
             livingPlayers[0].points += pot;
+            livingPlayers[0].pot = pot;
+        }
         else if (livingPlayers.Count == 2)
         {
             int potDifference = Random.Range(-(pot / 100), pot / 100);
 
             livingPlayers[0].points += (pot / 2) + potDifference;
+            livingPlayers[0].pot = (pot / 2) + potDifference;
             livingPlayers[1].points += (pot / 2) - potDifference;
+            livingPlayers[1].pot = (pot / 2) - potDifference;
         }
         else if (livingPlayers.Count >= 3)
         {
@@ -115,8 +125,44 @@ public class Game : MonoBehaviour {
             logCurrentLeaderboard();
         }
 
+        GameObject tempSplash = Instantiate(splash_Score);
+        GameObject canvas = GameObject.Find("Canvas");
+        tempSplash.transform.SetParent(canvas.transform, false);
+ //       Debug.Log("Living players = " + livingPlayers.Count);
+        switch (livingPlayers.Count)
+        {
+            case 0:
+                tempSplash.GetComponent<ScoreScreen>().displayResults();
+                break;
+            case 1:
+                tempSplash.GetComponent<ScoreScreen>().displayResults((int.Parse(livingPlayers[0].transform.name))-1, livingPlayers[0].GetComponent<Player>().pot);
+                break;
+            case 2:
+                tempSplash.GetComponent<ScoreScreen>().displayResults((int.Parse(livingPlayers[0].transform.name))-1, livingPlayers[0].GetComponent<Player>().pot,
+                    int.Parse((livingPlayers[1].transform.name))-1, livingPlayers[1].GetComponent<Player>().pot);
+                break;
+            case 3:
+                tempSplash.GetComponent<ScoreScreen>().displayResults((int.Parse(livingPlayers[0].transform.name))-1, livingPlayers[0].GetComponent<Player>().pot,
+                    int.Parse((livingPlayers[1].transform.name))-1, livingPlayers[1].GetComponent<Player>().pot,
+                    int.Parse((livingPlayers[2].transform.name))-1, livingPlayers[2].GetComponent<Player>().pot);
+                break;
+            case 4:
+                tempSplash.GetComponent<ScoreScreen>().displayResults((int.Parse(livingPlayers[0].transform.name))-1, livingPlayers[0].GetComponent<Player>().pot,
+                    (int.Parse(livingPlayers[1].transform.name))-1, livingPlayers[1].GetComponent<Player>().pot,
+                    (int.Parse(livingPlayers[2].transform.name))-1, livingPlayers[2].GetComponent<Player>().pot,
+                    (int.Parse(livingPlayers[3].transform.name))-1, livingPlayers[3].GetComponent<Player>().pot);
+                break;
+
+
+        }
+
+        tempSplash.GetComponent<ScoreScreen>().gameController = this;
+        tempSplash.GetComponent<ScoreScreen>().displayTotals(players[0].points, players[1].points, players[2].points, players[3].points);
+
         round++;
+ //       wait(4);
         roundStarted = false;
+        showingScore = true;
     }
 
     /// <summary>
@@ -183,6 +229,7 @@ public class Game : MonoBehaviour {
         }
         
         // Visual shit
+
     }
 
     private void logCurrentLeaderboard()
