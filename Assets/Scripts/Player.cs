@@ -60,10 +60,10 @@ public class Player : MonoBehaviour {
     /// <summary>
     /// Gets the button input to set a player target
     /// </summary>
-    private void setTarget()
+    public void setTarget(Player targetedPlayer)
     {
         // button input to decide target
-        targetSet = true;
+        target = targetedPlayer;
     }
 
     
