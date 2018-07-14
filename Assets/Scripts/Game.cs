@@ -91,16 +91,21 @@ public class Game : MonoBehaviour {
             livingPlayers[i].pot = (pot / livingPlayers.Count) + potDifference;
         }
         */
-        
+
         // New 1-2 winners (3-4 surviving replays)
         if (livingPlayers.Count == 1)
+        {
             livingPlayers[0].points += pot;
+            livingPlayers[0].pot = pot;
+        }
         else if (livingPlayers.Count == 2)
         {
             int potDifference = Random.Range(-(pot / 100), pot / 100);
 
             livingPlayers[0].points += (pot / 2) + potDifference;
+            livingPlayers[0].pot = (pot / 2) + potDifference;
             livingPlayers[1].points += (pot / 2) - potDifference;
+            livingPlayers[1].pot = (pot / 2) - potDifference;
         }
         else if (livingPlayers.Count >= 3)
         {
