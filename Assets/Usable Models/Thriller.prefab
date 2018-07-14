@@ -170,6 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4568329543898560}
   - component: {fileID: 95348152931500810}
+  - component: {fileID: 114520128384557240}
   m_Layer: 0
   m_Name: Thriller
   m_TagString: Untagged
@@ -1045,6 +1046,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114520128384557240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1308130998242672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 585103871c5c52f4b9e1da54a453175a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!137 &137419369290322810
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1060,11 +1072,11 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 1af8ddff847db8b439a52be0a9213de0, type: 3}
-  - {fileID: 2100002, guid: 1af8ddff847db8b439a52be0a9213de0, type: 3}
-  - {fileID: 2100004, guid: 1af8ddff847db8b439a52be0a9213de0, type: 3}
-  - {fileID: 2100006, guid: 1af8ddff847db8b439a52be0a9213de0, type: 3}
-  - {fileID: 2100008, guid: 1af8ddff847db8b439a52be0a9213de0, type: 3}
+  - {fileID: 2100000, guid: 7264e84b3c604bd4d9b46375be9c6269, type: 2}
+  - {fileID: 2100000, guid: 61934b93f5fff5446bc3a1057c59c5b3, type: 2}
+  - {fileID: 2100000, guid: 31ab9f2c1d14afd4ab462182ceb61172, type: 2}
+  - {fileID: 2100000, guid: 19973363c014d084b81fa0f967c275d9, type: 2}
+  - {fileID: 2100000, guid: dd877e5b2611fa44d87f5bb152f95445, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
