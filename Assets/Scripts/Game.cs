@@ -15,18 +15,14 @@ public class Game : MonoBehaviour {
 
     public float secondsBeforeFiring = 3.0f; // The number of seconds between the players drawing and firing
 
-    private bool roundStarted = false;
-    private bool waitingForInput = false;
-
-    // Use this for initialization
-    void Start () {
-
-         for (int i = 0; i < players.Count; i++)
-            players[i].reset();
-	}
+    private bool roundStarted = false; // Has a current round started? 
+    private bool waitingForInput = false; // Is the round waiting for player input? 
 
     private void LateUpdate()
     {
+        if (round > totalRounds)
+            showEndScreen();
+
         if (!roundStarted)
             startRound();
 
@@ -36,7 +32,10 @@ public class Game : MonoBehaviour {
 
     private void startRound()
     {
+        for (int i = 0; i < players.Count; i++)
+            players[i].reset();
 
+        roundStarted = true;
     }
 
     /// <summary>
@@ -73,10 +72,11 @@ public class Game : MonoBehaviour {
         }
         else
         {
-            // no winners
+            // no winners, do something
         }
 
         round++;
+        roundStarted = false;
     }
 
     /// <summary>
@@ -120,5 +120,25 @@ public class Game : MonoBehaviour {
         }
 
         return livingPlayers;
+    }
+
+    private void showEndScreen()
+    {
+        // Calculate leaderboard (needs testing)
+        List<Player> leaderboard = players;
+
+        for (int i = 0; i < leaderboard.Count; i++)
+        {
+            int j = i;
+
+            if (leaderboard[j].points > leaderboard[j + 1].points)
+            {
+                Player swap = leaderboard[j];
+                leaderboard[j] = leaderboard[j + 1];
+                leaderboard[j + 1] = swap;
+            }
+        }
+
+        // Visual shit
     }
 }

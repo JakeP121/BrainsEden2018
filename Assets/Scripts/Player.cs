@@ -65,6 +65,4 @@ public class Player : MonoBehaviour {
         // button input to decide target
         target = targetedPlayer;
     }
-
-    
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Vibrations : MonoBehaviour {
 
-    private int playerName = 0;
+    private int playerName;
     private List<Joycon> joycons;
     private Player player;
     public int jc_ind = 0;
@@ -18,6 +18,7 @@ public class Vibrations : MonoBehaviour {
         if (joycons.Count < jc_ind+1){
 			Destroy(gameObject);
 		}
+        playerName = int.Parse(this.gameObject.name) - 1;
 	}
 	
 	// Update is called once per frame
