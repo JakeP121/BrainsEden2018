@@ -75,12 +75,34 @@ public class Game : MonoBehaviour {
 
         List<Player> livingPlayers = getLivingPlayers();
 
+        // OG 1-3 winners
+        /*
         for (int i = 0; i < livingPlayers.Count; i++)
         {
             int potDifference = Random.Range(-(pot / 100), pot / 100);
 
             livingPlayers[i].points += (pot / livingPlayers.Count) + potDifference;
         }
+        */
+        
+        // New 1-2 winners (3-4 surviving replays)
+        if (livingPlayers.Count == 1)
+            livingPlayers[0].points += pot;
+        else if (livingPlayers.Count == 2)
+        {
+            int potDifference = Random.Range(-(pot / 100), pot / 100);
+
+            livingPlayers[0].points += (pot / 2) + potDifference;
+            livingPlayers[1].points += (pot / 2) - potDifference;
+        }
+        else
+        {
+            for (int i = 0; i < livingPlayers.Count; i++)
+                livingPlayers[i].reset();
+
+            return;
+        }
+
 
         if (debugging)
         {
