@@ -103,28 +103,29 @@ public class Game : MonoBehaviour {
                 tempSplash.GetComponent<ScoreScreen>().displayResults();
                 break;
             case 1:
-                tempSplash.GetComponent<ScoreScreen>().displayResults(int.Parse(livingPlayers[0].transform.name), livingPlayers[0].GetComponent<Player>().pot);
+                tempSplash.GetComponent<ScoreScreen>().displayResults((int.Parse(livingPlayers[0].transform.name))-1, livingPlayers[0].GetComponent<Player>().pot);
                 break;
             case 2:
-                tempSplash.GetComponent<ScoreScreen>().displayResults(int.Parse(livingPlayers[0].transform.name), livingPlayers[0].GetComponent<Player>().pot,
-                    int.Parse(livingPlayers[1].transform.name), livingPlayers[1].GetComponent<Player>().pot);
+                tempSplash.GetComponent<ScoreScreen>().displayResults((int.Parse(livingPlayers[0].transform.name))-1, livingPlayers[0].GetComponent<Player>().pot,
+                    int.Parse((livingPlayers[1].transform.name))-1, livingPlayers[1].GetComponent<Player>().pot);
                 break;
             case 3:
-                tempSplash.GetComponent<ScoreScreen>().displayResults(int.Parse(livingPlayers[0].transform.name), livingPlayers[0].GetComponent<Player>().pot,
-                    int.Parse(livingPlayers[1].transform.name), livingPlayers[1].GetComponent<Player>().pot,
-                    int.Parse(livingPlayers[2].transform.name), livingPlayers[2].GetComponent<Player>().pot);
+                tempSplash.GetComponent<ScoreScreen>().displayResults((int.Parse(livingPlayers[0].transform.name))-1, livingPlayers[0].GetComponent<Player>().pot,
+                    int.Parse((livingPlayers[1].transform.name))-1, livingPlayers[1].GetComponent<Player>().pot,
+                    int.Parse((livingPlayers[2].transform.name))-1, livingPlayers[2].GetComponent<Player>().pot);
                 break;
             case 4:
-                tempSplash.GetComponent<ScoreScreen>().displayResults(int.Parse(livingPlayers[0].transform.name), livingPlayers[0].GetComponent<Player>().pot,
-                    int.Parse(livingPlayers[1].transform.name), livingPlayers[1].GetComponent<Player>().pot,
-                    int.Parse(livingPlayers[2].transform.name), livingPlayers[2].GetComponent<Player>().pot,
-                    int.Parse(livingPlayers[3].transform.name), livingPlayers[3].GetComponent<Player>().pot);
+                tempSplash.GetComponent<ScoreScreen>().displayResults((int.Parse(livingPlayers[0].transform.name))-1, livingPlayers[0].GetComponent<Player>().pot,
+                    (int.Parse(livingPlayers[1].transform.name))-1, livingPlayers[1].GetComponent<Player>().pot,
+                    (int.Parse(livingPlayers[2].transform.name))-1, livingPlayers[2].GetComponent<Player>().pot,
+                    (int.Parse(livingPlayers[3].transform.name))-1, livingPlayers[3].GetComponent<Player>().pot);
                 break;
 
 
         }
 
         tempSplash.GetComponent<ScoreScreen>().gameController = this;
+        tempSplash.GetComponent<ScoreScreen>().displayTotals(players[0].points, players[1].points, players[2].points, players[3].points);
 
         round++;
  //       wait(4);

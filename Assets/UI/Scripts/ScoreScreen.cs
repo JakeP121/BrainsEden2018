@@ -10,6 +10,11 @@ public class ScoreScreen : MonoBehaviour {
     private Text text_03;
     private Text text_04;
 
+    private Text text_05;
+    private Text text_06;
+    private Text text_07;
+    private Text text_08;
+
     public GameObject panel_01;
     public GameObject panel_02;
     public GameObject panel_03;
@@ -36,6 +41,11 @@ public class ScoreScreen : MonoBehaviour {
         text_02 = panel_02.gameObject.transform.GetChild(3).gameObject.GetComponent<Text>();
         text_03 = panel_03.gameObject.transform.GetChild(3).gameObject.GetComponent<Text>();
         text_04 = panel_04.gameObject.transform.GetChild(3).gameObject.GetComponent<Text>();
+
+        text_05 = panel_01.gameObject.transform.GetChild(4).gameObject.GetComponent<Text>();
+        text_06 = panel_02.gameObject.transform.GetChild(4).gameObject.GetComponent<Text>();
+        text_07 = panel_03.gameObject.transform.GetChild(4).gameObject.GetComponent<Text>();
+        text_08 = panel_04.gameObject.transform.GetChild(4).gameObject.GetComponent<Text>();
 
         //   displayResults(0, 48, 2, 52);
 
@@ -149,6 +159,15 @@ public class ScoreScreen : MonoBehaviour {
                 text_04.text = "+" + fourth_score.ToString();
                 break;
         }
+
+    }
+
+    public void displayTotals(int p1, int p2, int p3, int p4)
+    {
+        text_05.text = p1.ToString();
+        text_06.text = p2.ToString();
+        text_07.text = p3.ToString();
+        text_08.text = p4.ToString();
     }
 
     private void OnDestroy()
