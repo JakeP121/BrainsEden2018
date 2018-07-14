@@ -36,6 +36,7 @@ public class Game : MonoBehaviour {
             players[i].reset();
 
         roundStarted = true;
+        waitingForInput = true;
     }
 
     /// <summary>
