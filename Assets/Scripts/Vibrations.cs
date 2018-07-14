@@ -48,7 +48,6 @@ public class Vibrations : MonoBehaviour {
         {
             current.SetRumble(160, 160, 0.6f, 100);
             yield return new WaitForSeconds(0.35f); 
-            print(i);
         }
 
     }

@@ -176,7 +176,7 @@ public class Game : MonoBehaviour {
 
         for (int i = 0; i < leaderboard.Count; i++)
         {
-            int playerName = int.Parse(leaderboard[i].name) - 1;
+            int playerName = int.Parse(leaderboard[i].name);
             Debug.Log("Player " + playerName + ": " + leaderboard[i].points);
         }
     }

@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
 
     private Player target;
 
-    private bool debugging = false;
+    private bool debugging = true;
 
     /// <summary>
     /// Plays animation to show who the player aimed at
