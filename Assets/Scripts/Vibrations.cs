@@ -6,23 +6,45 @@ using XInputDotNetPure;
 
 public class Vibrations : MonoBehaviour {
 
-    private int playerName;
+    private int playerName = 0;
+    private List<Joycon> joycons;
+
+    public int jc_ind = 0;
 
 	// Use this for initialization
 	void Start () {
-        playerName = int.Parse(this.gameObject.name);
+        joycons = JoyconManager.Instance.j;
+        if (joycons.Count < jc_ind+1){
+			Destroy(gameObject);
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        nudge(controller.dpadValue());
-        for (KeyCode i = 0; i <= KeyCode.Joystick8Button19; i++)
-{
-    if (Input.GetKey(i))
-        Debug.Log(i);
-}
-    if (Input.GetAxisRaw("JoyConVertical") != 0)
-        print(Input.GetAxisRaw("JoyConVertical"));
+        nudge(SelectNudge());
+    }
+
+    int SelectNudge()
+    {
+        Vector2 stickSelection;
+        Joycon current = joycons[playerName];
+        int selection = 0;
+
+        float [] input = current.GetStick();
+
+        stickSelection.y = input[0];
+        stickSelection.x = input[1];
+
+        if(stickSelection.y > 0.5)
+            return 1;
+        if(stickSelection.y < -0.5)
+            return 2;
+        if(stickSelection.x > 0.5)
+            return 3;    
+        if(stickSelection.x < -0.5)
+            return 4;
+        
+        return 0;
 
     }
 
@@ -31,16 +53,22 @@ public class Vibrations : MonoBehaviour {
         {
             case 1:
                 {
-                    print("Hit");
-                    GamePad.SetVibration(PlayerIndex.One, 1, 1);
-                    StartCoroutine(StopVibration(PlayerIndex.One));
-                    
+                    joycons[0].SetRumble(160, 320, 0.6f, 200);
                     break;
                 }
             case 2:
                 {
-                    GamePad.SetVibration(PlayerIndex.Two, 1, 1);
-                    StartCoroutine(StopVibration(PlayerIndex.Two));
+                    joycons[1].SetRumble(160, 320, 0.6f, 200);
+                    break;
+                }
+            case 3:
+                {
+                    joycons[2].SetRumble(160, 320, 0.6f, 200);
+                    break;
+                }
+            case 4:
+                {
+                    joycons[3].SetRumble(160, 320, 0.6f, 200);
                     break;
                 }
             default:
@@ -50,13 +78,4 @@ public class Vibrations : MonoBehaviour {
         }
 
     }
-
-    IEnumerator StopVibration (PlayerIndex player)
-    {
-        print("Waiting");
-        yield return new WaitForSeconds(1);
-        GamePad.SetVibration(player, 0, 0);
-
-    }
-
 }
