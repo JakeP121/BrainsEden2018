@@ -20,7 +20,7 @@ public class Vibrations : MonoBehaviour {
         player = this.GetComponent<Player>();
 
         if (joycons.Count < jc_ind+1){
-			Destroy(gameObject);
+            Destroy(gameObject);
 		}
         playerName = int.Parse(this.gameObject.name) - 1;
         current = joycons[playerName];

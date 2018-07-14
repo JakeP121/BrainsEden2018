@@ -18,13 +18,24 @@ public class Game : MonoBehaviour {
     private bool roundStarted = false; // Has a current round started? 
     private bool waitingForInput = false; // Is the round waiting for player input? 
 
+    private bool gameOver = false; 
+
     private void LateUpdate()
     {
+        if (gameOver)
+            return;
+
         if (round > totalRounds)
+        {
             showEndScreen();
+            gameOver = true;
+        }
 
         if (!roundStarted)
             startRound();
+
+        if (playerTargetsSet())
+            waitingForInput = false;
 
         if (roundStarted && !waitingForInput)
             playRound();
@@ -47,12 +58,14 @@ public class Game : MonoBehaviour {
         for (int i = 0; i < players.Count; i++)
             players[i].draw();
 
-        wait(secondsBeforeFiring);
+        StartCoroutine(wait(secondsBeforeFiring));
 
         // Roll for duds
         for (int i = 0; i < players.Count; i++)
         {
-            if (Random.Range(0.0f, 1.0f) >= gunAccuracy)
+            float rand = Random.Range(0.0f, 1.0f);
+
+            if (rand <= gunAccuracy)
                 players[i].shoot(true);
             else
                 players[i].shoot(false);
@@ -66,18 +79,21 @@ public class Game : MonoBehaviour {
         }
         else if (livingPlayers.Count == 2)
         {
-            int potDifference = Random.Range(-(pot / 10), pot / 10);
+            int potDifference = Random.Range(-(pot / 100), pot / 100);
 
             livingPlayers[0].points += (pot / 2) + potDifference;
             livingPlayers[1].points += (pot / 2) - potDifference;
         }
         else
         {
-            // no winners, do something
+            // no winners, re-run round
+            return;
         }
 
         round++;
         roundStarted = false;
+        Debug.Log("Round " + round + " over!");
+        logCurrentLeaderboard();
     }
 
     /// <summary>
@@ -125,21 +141,47 @@ public class Game : MonoBehaviour {
 
     private void showEndScreen()
     {
-        // Calculate leaderboard (needs testing)
+        // Calculate sorted leaderboard
         List<Player> leaderboard = players;
 
         for (int i = 0; i < leaderboard.Count; i++)
         {
-            int j = i;
-
-            if (leaderboard[j].points > leaderboard[j + 1].points)
+            for (int j = 0; j < leaderboard.Count - i - 1; j++)
             {
-                Player swap = leaderboard[j];
-                leaderboard[j] = leaderboard[j + 1];
-                leaderboard[j + 1] = swap;
+                if (leaderboard[j].points < leaderboard[j + 1].points)
+                {
+                    Player swap = leaderboard[j];
+                    leaderboard[j] = leaderboard[j + 1];
+                    leaderboard[j + 1] = swap;
+                }
+            }
+        }
+        
+        // Visual shit
+    }
+
+    private void logCurrentLeaderboard()
+    {
+        // Calculate sorted leaderboard
+        List<Player> leaderboard = players;
+
+        for (int i = 0; i < leaderboard.Count; i++)
+        {
+            for (int j = 0; j < leaderboard.Count - i - 1; j++)
+            {
+                if (leaderboard[j].points < leaderboard[j + 1].points)
+                {
+                    Player swap = leaderboard[j];
+                    leaderboard[j] = leaderboard[j + 1];
+                    leaderboard[j + 1] = swap;
+                }
             }
         }
 
-        // Visual shit
+        for (int i = 0; i < leaderboard.Count; i++)
+        {
+            int playerName = int.Parse(leaderboard[i].name) - 1;
+            Debug.Log("Player " + playerName + ": " + leaderboard[i].points);
+        }
     }
 }
