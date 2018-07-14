@@ -530,7 +530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e77a623e9125e429478d21fc01b6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splash_Win: {fileID: 1357550264815618, guid: 2ab167bf1703589448df35bb6dd05128, type: 2}
+  splash_Win: {fileID: 1589593295092602, guid: ed341e15df3993e4ea11f92c6013ec6b, type: 2}
 --- !u!4 &2034325178
 Transform:
   m_ObjectHideFlags: 0

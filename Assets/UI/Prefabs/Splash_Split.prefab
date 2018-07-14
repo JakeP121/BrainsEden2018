@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 224956859960040572}
   - component: {fileID: 222931832733057996}
   - component: {fileID: 114312340036092310}
+  - component: {fileID: 114761801471065200}
   m_Layer: 5
   m_Name: Splash_Split
   m_TagString: Untagged
@@ -89,6 +90,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114761801471065200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1589593295092602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c65cfc7bcad20841b8c0d9fa6833785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 114805304659335256}
 --- !u!114 &114805304659335256
 MonoBehaviour:
   m_ObjectHideFlags: 1
