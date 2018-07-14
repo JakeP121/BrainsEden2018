@@ -113,6 +113,7 @@
     <None Include="Assets\XInputDotNet\Docs.txt" />
     <None Include="Assets\Imports\PostProcessing\Resources\Shaders\MotionBlur.cginc" />
     <None Include="Assets\Imports\PostProcessing\Resources\Shaders\Fog.shader" />
+    <None Include="Assets\Effects\Shared\Shaders\SurfaceShader_VC.shader" />
     <None Include="Assets\Imports\PostProcessing\Editor Resources\Monitors\ParadeRender.shader" />
     <None Include="Assets\Imports\PostProcessing\Resources\Shaders\LutGen.shader" />
     <None Include="Assets\Imports\PostProcessing\Editor Resources\Monitors\HistogramRender.shader" />
