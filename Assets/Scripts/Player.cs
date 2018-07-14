@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
 
     public bool targetSet = false;
     public bool isAlive = true;
@@ -11,6 +12,8 @@ public class Player : MonoBehaviour {
 
     private Player target;
 
+    private bool debugging = false;
+
     /// <summary>
     /// Plays animation to show who the player aimed at
     /// </summary>
@@ -18,7 +21,7 @@ public class Player : MonoBehaviour {
     {
         // Not implemented
     }
-    
+
     /// <summary>
     /// The player shoots their banana
     /// </summary>
@@ -30,10 +33,24 @@ public class Player : MonoBehaviour {
         if (blank == true)
         {
             //successful shoot animation start
+
+            if (debugging)
+            {
+                int playerName = int.Parse(this.gameObject.name) - 1;
+                Debug.Log("Player " + playerName + " was successful");
+            }
+
             target.die();
         }
         else
+        {
             // failed shoot animation start
+            if (debugging)
+            {
+                int playerName = int.Parse(this.gameObject.name) - 1;
+                Debug.Log("Player " + playerName + " was unsuccessful");
+            }
+        }
 
         target = null;
         targetSet = false;
@@ -43,7 +60,19 @@ public class Player : MonoBehaviour {
     {
         // Not implemented
 
+        if (!isAlive)
+            return;
+
         isAlive = false;
+
+        if (debugging)
+        {
+            int playerName = int.Parse(this.gameObject.name) - 1;
+
+            Debug.Log("Player " + playerName + " died");
+        }
+
+        transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 
 
@@ -64,5 +93,6 @@ public class Player : MonoBehaviour {
     {
         // button input to decide target
         target = targetedPlayer;
+        targetSet = true;
     }
 }
