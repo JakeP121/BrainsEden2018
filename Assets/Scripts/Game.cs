@@ -20,14 +20,14 @@ public class Game : MonoBehaviour {
 
     private bool gameOver = false;
 
-    private bool debugging = false;
+    private bool debugging = true;
 
     private void LateUpdate()
     {
         if (gameOver)
             return;
 
-        if (round >= totalRounds)
+        if (round > totalRounds)
         {
             showEndScreen();
             gameOver = true;
@@ -75,31 +75,21 @@ public class Game : MonoBehaviour {
 
         List<Player> livingPlayers = getLivingPlayers();
 
-        if (livingPlayers.Count == 1)
-        {
-            livingPlayers[0].points += pot;
-        }
-        else if (livingPlayers.Count == 2)
+        for (int i = 0; i < livingPlayers.Count; i++)
         {
             int potDifference = Random.Range(-(pot / 100), pot / 100);
 
-            livingPlayers[0].points += (pot / 2) + potDifference;
-            livingPlayers[1].points += (pot / 2) - potDifference;
+            livingPlayers[i].points += (pot / livingPlayers.Count) + potDifference;
         }
-        else
-        {
-            // no winners, re-run round
-            return;
-        }
-
-        round++;
-        roundStarted = false;
 
         if (debugging)
         {
             Debug.Log("Round " + round + " over!");
             logCurrentLeaderboard();
         }
+
+        round++;
+        roundStarted = false;
     }
 
     /// <summary>

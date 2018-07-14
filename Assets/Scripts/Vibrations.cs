@@ -120,9 +120,9 @@ public class Vibrations : MonoBehaviour {
             if(stickSelection.y > 0.5) //Player 1
                 return 1;
             if(stickSelection.y < -0.5) //Player 4
-                return 4;
+                return 3;
             if(stickSelection.x > 0.5) //Player 2
-                return 3;    
+                return 4;    
             if(stickSelection.x < -0.5) //Player 4
                 return 2;
         }

@@ -51,7 +51,8 @@ public class Player : MonoBehaviour
             }
         }
 
-        target.GetComponent<AIPlayer>().beAimedAt(this); // Show AI that this player tried to shoot them.
+        if (target.GetComponent<AIHandler>() && target.GetComponent<AIHandler>().useAI)
+            target.GetComponent<AIPlayer>().beAimedAt(this); // Show AI that this player tried to shoot them.
 
         target = null;
         targetSet = false;
