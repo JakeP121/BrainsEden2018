@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
 
 public class Player : MonoBehaviour
 {
@@ -25,30 +26,40 @@ public class Player : MonoBehaviour
     /// <summary>
     /// The player shoots their banana
     /// </summary>
-    /// <param name="blank">Should the bullet be blank?</param>
-    public void shoot(bool blank)
+    /// <param name="loaded">Should the bullet be blank?</param>
+    public void shoot(bool loaded)
     {
-        if (blank == true)
+        GetComponent<MonkeyController>().AftershotStance(target.gameObject);
+
+        Thread.Sleep(100);
+
+        if (!loaded)
         {
-            //successful shoot animation start
 
             if (debugging)
             {
-                int playerName = int.Parse(this.gameObject.name) - 1;
-                Debug.Log("Player " + playerName + " was successful");
+                int playerName = int.Parse(this.gameObject.name);
+                Debug.Log("Player " + playerName + " was unsuccessful");
             }
 
-            target.die();
         }
         else
         {
-            // failed shoot animation start
+            if (gameObject == target.gameObject)
+            {
+                GetComponent<MonkeyController>().DeathStance();
+            
+            }
+
 
             if (debugging)
             {
-                int playerName = int.Parse(this.gameObject.name) - 1;
-                Debug.Log("Player " + playerName + " was unsuccessful");
+                int playerName = int.Parse(this.gameObject.name);
+                Debug.Log("Player " + playerName + " was successful");
             }
+
+            
+            target.die();
         }
 
         if (target.GetComponent<AIHandler>() && target.GetComponent<AIHandler>().useAI)
@@ -60,7 +71,7 @@ public class Player : MonoBehaviour
 
     public void die()
     {
-        // Not implemented
+        GetComponent<MonkeyController>().DeathStance();
 
         if (!isAlive)
             return;

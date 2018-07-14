@@ -22,6 +22,8 @@ public class Game : MonoBehaviour {
 
     private bool debugging = true;
 
+    private bool[] hasDied = new bool[4];
+
     private void LateUpdate()
     {
         if (gameOver)
