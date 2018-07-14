@@ -15,27 +15,35 @@ public class Game : MonoBehaviour {
 
     public float secondsBeforeFiring = 3.0f; // The number of seconds between the players drawing and firing
 
+    private bool roundStarted = false;
+    private bool waitingForInput = false;
+
     // Use this for initialization
     void Start () {
 
-        while (round <= totalRounds)
-        {
-            // Reset all players
-            for (int i = 0; i < players.Count; i++)
-                players[i].reset();
-
-            playRound();
-            round++;
-        }
+         for (int i = 0; i < players.Count; i++)
+            players[i].reset();
 	}
-	
+
+    private void LateUpdate()
+    {
+        if (!roundStarted)
+            startRound();
+
+        if (roundStarted && !waitingForInput)
+            playRound();
+    }
+
+    private void startRound()
+    {
+
+    }
+
     /// <summary>
     /// Plays a round
     /// </summary>
-    void playRound()
+    private void playRound()
     {
-        while (playerTargetsSet() == false); // Loop until targets set
-
         for (int i = 0; i < players.Count; i++)
             players[i].draw();
 
@@ -67,6 +75,8 @@ public class Game : MonoBehaviour {
         {
             // no winners
         }
+
+        round++;
     }
 
     /// <summary>
