@@ -10,6 +10,10 @@ public class Vibrations : MonoBehaviour {
     private Player player;
     public int jc_ind = 0;
 
+    private Joycon current;
+
+    private bool playerActive = true;
+
 	// Use this for initialization
 	void Start () {
         joycons = JoyconManager.Instance.j;
@@ -19,19 +23,38 @@ public class Vibrations : MonoBehaviour {
             Destroy(gameObject);
 		}
         playerName = int.Parse(this.gameObject.name) - 1;
+        current = joycons[playerName];
 	}
 	
 	// Update is called once per frame
 	void Update () {
         Nudge(SelectNudge());
         Target();
+        WhoAmI();
+    }
+
+    void WhoAmI()
+    {
+        if(current.GetButtonDown(Joycon.Button.MINUS) || current.GetButtonDown(Joycon.Button.PLUS))
+        {
+            print("Player" + (playerName + 1));
+            StartCoroutine(slowVibrations());
+        }
+    }
+
+    IEnumerator slowVibrations ()
+    {
+        for(int i = 0; i < playerName + 1; i++)
+        {
+            current.SetRumble(160, 160, 0.6f, 100);
+            yield return new WaitForSeconds(0.35f); 
+            print(i);
+        }
+
     }
 
     void Target()
     {
-        //Selects the current joycon from the list
-        Joycon current = joycons[playerName];
-
         int playerToShoot = 0;
 
         //Different statements for each type of joycon
@@ -63,6 +86,7 @@ public class Vibrations : MonoBehaviour {
         {
             player.setTarget(GameObject.Find(playerToShoot.ToString()).GetComponent<Player>());
             player.targetSet = true;
+            print("you shot" + playerToShoot.ToString());
         }
 
     }
@@ -70,7 +94,6 @@ public class Vibrations : MonoBehaviour {
     int SelectNudge()
     {
         Vector2 stickSelection;
-        Joycon current = joycons[playerName];
 
         //Gets the floats for the stick axis
         float [] input = current.GetStick();
@@ -95,7 +118,7 @@ public class Vibrations : MonoBehaviour {
 
     void Nudge (int nudgePlayer){
 
-        //Switches to rumble the selected controller
+        //Switch to rumble the selected controller
         switch (nudgePlayer)
         {
             case 1:
@@ -104,7 +127,7 @@ public class Vibrations : MonoBehaviour {
                     break;
                 }
             case 2:
-                {
+                {                    
                     joycons[1].SetRumble(160, 320, 0.6f, 200);
                     break;
                 }
