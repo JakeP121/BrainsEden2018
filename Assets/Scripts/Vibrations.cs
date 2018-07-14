@@ -7,17 +7,23 @@ using XInputDotNetPure;
 public class Vibrations : MonoBehaviour {
 
     private int playerName;
-    private ControllerButtons controller;
 
 	// Use this for initialization
 	void Start () {
         playerName = int.Parse(this.gameObject.name);
-        controller = this.GetComponent<ControllerButtons>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
         nudge(controller.dpadValue());
+        for (KeyCode i = 0; i <= KeyCode.Joystick8Button19; i++)
+{
+    if (Input.GetKey(i))
+        Debug.Log(i);
+}
+    if (Input.GetAxisRaw("JoyConVertical") != 0)
+        print(Input.GetAxisRaw("JoyConVertical"));
+
     }
 
     void nudge (int target){
