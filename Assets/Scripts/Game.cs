@@ -18,14 +18,16 @@ public class Game : MonoBehaviour {
     private bool roundStarted = false; // Has a current round started? 
     private bool waitingForInput = false; // Is the round waiting for player input? 
 
-    private bool gameOver = false; 
+    private bool gameOver = false;
+
+    private bool debugging = false;
 
     private void LateUpdate()
     {
         if (gameOver)
             return;
 
-        if (round > totalRounds)
+        if (round >= totalRounds)
         {
             showEndScreen();
             gameOver = true;
@@ -92,8 +94,12 @@ public class Game : MonoBehaviour {
 
         round++;
         roundStarted = false;
-        Debug.Log("Round " + round + " over!");
-        logCurrentLeaderboard();
+
+        if (debugging)
+        {
+            Debug.Log("Round " + round + " over!");
+            logCurrentLeaderboard();
+        }
     }
 
     /// <summary>

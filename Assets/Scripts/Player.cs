@@ -28,8 +28,6 @@ public class Player : MonoBehaviour
     /// <param name="blank">Should the bullet be blank?</param>
     public void shoot(bool blank)
     {
-        // Not implemented
-
         if (blank == true)
         {
             //successful shoot animation start
@@ -45,12 +43,15 @@ public class Player : MonoBehaviour
         else
         {
             // failed shoot animation start
+
             if (debugging)
             {
                 int playerName = int.Parse(this.gameObject.name) - 1;
                 Debug.Log("Player " + playerName + " was unsuccessful");
             }
         }
+
+        target.GetComponent<AIPlayer>().beAimedAt(this); // Show AI that this player tried to shoot them.
 
         target = null;
         targetSet = false;
