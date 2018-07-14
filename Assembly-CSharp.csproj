@@ -10,7 +10,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace>
     </RootNamespace>
-    <ProjectGuid>{3863A88E-F47B-6D2B-4433-42FDBD6A2B3C}</ProjectGuid>
+    <ProjectGuid>{EDA264AB-1873-8C0A-800A-C2B8C688E9EC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -109,10 +109,7 @@
     <Compile Include="Assets\Imports\PostProcessing\Runtime\Utils\GraphicsUtils.cs" />
     <Compile Include="Assets\Imports\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
     <Compile Include="Assets\Imports\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
-    <Compile Include="Assets\PlayerController.cs" />
     <Compile Include="Assets\Scenes\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\Game.cs" />
-    <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Vibrations.cs" />
     <None Include="Assets\Imports\PostProcessing\Resources\Shaders\DepthOfField.shader" />
     <None Include="Assets\Imports\PostProcessing\Resources\Shaders\MotionBlur.cginc" />
@@ -155,10 +152,10 @@
     <None Include="Assets\Imports\PostProcessing\Resources\Shaders\AmbientOcclusion.cginc" />
     <None Include="Assets\Imports\PostProcessing\Editor Resources\Monitors\WaveformCompute.compute" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>C:/Users/BrainsEden123/Documents/BrainsEden2018/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>D:/Temp name/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/BrainsEden123/Documents/BrainsEden2018/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>D:/Temp name/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity2018/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -356,16 +353,16 @@
       <HintPath>C:/Program Files/Unity2018/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="XInputDotNetPure">
-      <HintPath>C:/Users/BrainsEden123/Documents/BrainsEden2018/Assets/Plugins/x86_64/XInputDotNetPure.dll</HintPath>
+      <HintPath>D:/Temp name/Assets/Plugins/x86_64/XInputDotNetPure.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
-      <HintPath>C:/Users/BrainsEden123/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
+      <HintPath>C:/Users/BrainsEden124/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Purchasing">
-      <HintPath>C:/Users/BrainsEden123/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@2.0.1/UnityEngine.Purchasing.dll</HintPath>
+      <HintPath>C:/Users/BrainsEden124/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@2.0.1/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
-      <HintPath>C:/Users/BrainsEden123/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/BrainsEden124/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity2018/Editor/Data/MonoBleedingEdge/lib/mono/2.0-api/mscorlib.dll</HintPath>
@@ -397,7 +394,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{43DE84DE-8C31-5C1B-DAC3-6C65A34C0A51}</Project>
+      <Project>{4A4CA941-7CEF-2634-EFC1-BFF17CBF7A27}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
   </ItemGroup>
