@@ -95,6 +95,7 @@ public class Player : MonoBehaviour
         target = null;
 
         GetComponent<MonkeyController>().NormalStance();
+        transform.Find("Banana").GetComponent<MeshRenderer>().enabled = false;
         pot = 0;
     }
 
@@ -106,5 +107,6 @@ public class Player : MonoBehaviour
         // button input to decide target
         target = targetedPlayer;
         targetSet = true;
+        transform.Find("Banana").GetComponent<MeshRenderer>().enabled = true;
     }
 }
