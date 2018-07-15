@@ -14,6 +14,8 @@ public class Vibrations : MonoBehaviour {
 
     private bool playerActive = true;
 
+    public AudioClip click;
+
 	// Use this for initialization
 	void Start () {
         joycons = JoyconManager.Instance.j;
@@ -60,6 +62,8 @@ public class Vibrations : MonoBehaviour {
     {
         int playerToShoot = 0;
 
+        GameObject SFX = GameObject.Find("SFX").gameObject;
+
         //Different statements for each type of joycon
         if (!current.isLeft)
         {
@@ -71,6 +75,7 @@ public class Vibrations : MonoBehaviour {
 				playerToShoot = 3;
             if(current.GetButtonDown(Joycon.Button.DPAD_DOWN))
 				playerToShoot = 4;
+            SFX.GetComponent<AudioSource>().PlayOneShot(click, 1);
         }
 
         else
@@ -83,6 +88,7 @@ public class Vibrations : MonoBehaviour {
 				playerToShoot = 3;
             if(current.GetButtonDown(Joycon.Button.DPAD_UP))
 				playerToShoot = 4;
+            SFX.GetComponent<AudioSource>().PlayOneShot(click, 1);
         }
 
         if (playerToShoot != 0)

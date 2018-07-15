@@ -38,6 +38,8 @@ public class Game : MonoBehaviour {
 
     List<Player> livingPlayers;
 
+    public AudioClip bang;
+
     private void LateUpdate()
     {
         if (gameState == State.GAMEOVER)
@@ -106,6 +108,8 @@ public class Game : MonoBehaviour {
     private void monkeysDie()
     {
         List<Player> livingPlayers = getLivingPlayers();
+        GameObject SFX = GameObject.Find("SFX").gameObject;
+        SFX.GetComponent<AudioSource>().PlayOneShot(bang, 1);
 
         foreach (Player p in players)
         {
