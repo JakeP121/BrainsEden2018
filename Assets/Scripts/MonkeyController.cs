@@ -93,12 +93,12 @@ public class MonkeyController : MonoBehaviour
     public void AftershotStance(GameObject target)
     {
         //initialise new model representing the change and removed old character
-        GameObject newModel = Instantiate(monkeyAftershotStance, transform.position, transform.GetChild(0).localRotation) as GameObject;
+        GameObject newModel = Instantiate(monkeyAftershotStance, transform.position, transform.localRotation) as GameObject;
         newModel.transform.parent = transform;
         newModel.transform.localScale = new Vector3(1, 1, 1);
 
         //at lookat
-        newModel.transform.LookAt(target.transform.GetChild(0));
+        newModel.transform.LookAt(target.transform);
 
         //newModel.transform.Rotate(new Vector3(0, -180, 0));
         anim = newModel.GetComponent<Animator>();
@@ -119,7 +119,7 @@ public class MonkeyController : MonoBehaviour
     public void DeathStance()
     {
         //initialise new model representing the change and removed old character
-        GameObject newModel = Instantiate(monkeyDeathStance, transform.position, transform.GetChild(1).localRotation) as GameObject;
+        GameObject newModel = Instantiate(monkeyDeathStance, transform.position, transform.localRotation) as GameObject;
         newModel.transform.parent = transform;
         newModel.transform.localScale = new Vector3(1, 1, 1);
 
@@ -198,7 +198,7 @@ public class MonkeyController : MonoBehaviour
         int selectedDance = Random.Range(0, monkeyDances.Length - 1);
 
         //initialise new model representing the change and removed old character
-        GameObject newModel = Instantiate(monkeyDances[selectedDance], transform.position, transform.GetChild(1).localRotation) as GameObject;
+        GameObject newModel = Instantiate(monkeyDances[selectedDance], transform.position, transform.localRotation) as GameObject;
         newModel.transform.parent = transform;
         newModel.transform.localScale = new Vector3(1, 1, 1);
         //newModel.transform.Rotate(new Vector3(0, -180, 0));
