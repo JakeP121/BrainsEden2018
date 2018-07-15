@@ -32,8 +32,6 @@ public class Player : MonoBehaviour
     {
         GetComponent<MonkeyController>().AftershotStance(target.gameObject);
 
-        Thread.Sleep(100);
-
         if (!loaded)
         {
 
@@ -72,8 +70,6 @@ public class Player : MonoBehaviour
 
     public void die()
     {
-        GetComponent<MonkeyController>().DeathStance();
-
         if (!isAlive)
             return;
 
@@ -86,7 +82,6 @@ public class Player : MonoBehaviour
             Debug.Log("Player " + playerName + " died");
         }
 
-        transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 
 

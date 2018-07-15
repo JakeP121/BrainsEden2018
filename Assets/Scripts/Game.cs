@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
 
 public class Game : MonoBehaviour {
 
@@ -15,38 +16,48 @@ public class Game : MonoBehaviour {
 
     public float secondsBeforeFiring = 3.0f; // The number of seconds between the players drawing and firing
 
-    public bool roundStarted = false; // Has a current round started? 
-    private bool waitingForInput = false; // Is the round waiting for player input? 
-
-    private bool gameOver = false;
-
     private bool debugging = false;
 
     public GameObject splash_Score;
 
-    public bool showingScore = false;
-
     private bool[] hasDied = new bool[4];
+
+    public enum State { ROUND_STARTING, WAITING_FOR_INPUT, FIRING, PURGATORY, DYING, SHOWING_SCORE, ROUND_ENDED, GAMEOVER };
+    public State gameState;
+
+    public float purgatorySeconds = 3.0f;
+    private float purgatoryTimer = 0.0f;
 
     private void LateUpdate()
     {
-        if (gameOver)
+        if (gameState == State.GAMEOVER)
             return;
 
         if (round > totalRounds)
         {
             showEndScreen();
-            gameOver = true;
+            gameState = State.GAMEOVER;
         }
 
-        if (!roundStarted && !showingScore)
+        if (gameState == State.ROUND_STARTING)
             startRound();
 
-        if (playerTargetsSet())
-            waitingForInput = false;
+        if (gameState == State.WAITING_FOR_INPUT && playerTargetsSet())
+            gameState = State.FIRING;
 
-        if (roundStarted && !waitingForInput)
-            playRound();
+        if (gameState == State.PURGATORY)
+        {
+            if (purgatoryTimer > purgatorySeconds)
+            {
+                monkeysDie();
+                purgatoryTimer = 0.0f;
+            }
+            else
+                purgatoryTimer += Time.deltaTime;
+        }
+
+        if (gameState == State.FIRING)
+            monkeysFire();
     }
 
     private void startRound()
@@ -54,21 +65,18 @@ public class Game : MonoBehaviour {
         for (int i = 0; i < players.Count; i++)
             players[i].reset();
 
-        roundStarted = true;
-        waitingForInput = true;
+        gameState = State.WAITING_FOR_INPUT;
     }
 
     /// <summary>
     /// Plays a round
     /// </summary>
-    private void playRound()
+    private void monkeysFire()
     {
         List<Player> livingPlayers = getLivingPlayers();
 
         for (int i = 0; i < livingPlayers.Count; i++)
             players[i].draw();
-
-        StartCoroutine(wait(secondsBeforeFiring));
 
         // Roll for duds
         for (int i = 0; i < livingPlayers.Count; i++)
@@ -81,7 +89,21 @@ public class Game : MonoBehaviour {
                 livingPlayers[i].shoot(false);
         }
 
-        livingPlayers = getLivingPlayers();
+        gameState = State.PURGATORY;
+    }
+
+    private void monkeysDie()
+    {
+        List<Player> livingPlayers = getLivingPlayers();
+
+        foreach (Player p in players)
+        {
+            if (!livingPlayers.Contains(p))
+            {
+                if (p.GetComponent<MonkeyController>().currentStance != "Death")
+                    p.GetComponent<MonkeyController>().DeathStance();
+            }
+        }
 
         // OG 1-3 winners
         /*
@@ -114,7 +136,7 @@ public class Game : MonoBehaviour {
             for (int i = 0; i < livingPlayers.Count; i++)
                 livingPlayers[i].reset();
 
-            waitingForInput = true;
+            gameState = State.WAITING_FOR_INPUT;
             return;
         }
 
@@ -125,6 +147,8 @@ public class Game : MonoBehaviour {
             logCurrentLeaderboard();
         }
 
+
+        
         GameObject tempSplash = Instantiate(splash_Score);
         GameObject canvas = GameObject.Find("Canvas");
         tempSplash.transform.SetParent(canvas.transform, false);
@@ -158,22 +182,19 @@ public class Game : MonoBehaviour {
 
         tempSplash.GetComponent<ScoreScreen>().gameController = this;
         tempSplash.GetComponent<ScoreScreen>().displayTotals(players[0].points, players[1].points, players[2].points, players[3].points);
+        
+
 
         round++;
- //       wait(4);
-        roundStarted = false;
-        showingScore = true;
+        //       wait(4);
+        gameState = State.SHOWING_SCORE;
     }
 
-    /// <summary>
-    /// Waits boi
-    /// </summary>
-    /// <param name="seconds"></param>
-    /// <returns></returns>
-    private IEnumerator wait(float seconds)
+    public void startNextRound()
     {
-        yield return new WaitForSeconds(seconds);
+        gameState = State.ROUND_STARTING;
     }
+
 
     /// <summary>
     /// Checks if all players have confirmed a target

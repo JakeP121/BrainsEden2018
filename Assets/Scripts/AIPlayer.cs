@@ -11,7 +11,10 @@ public class AIPlayer : MonoBehaviour {
     private Player player;
 
     private bool debugging = false;
-    
+
+    public bool[] targets = new bool[4];
+
+
 	// Use this for initialization
 	void Start () {
         player = GetComponent<Player>();
@@ -25,9 +28,16 @@ public class AIPlayer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
-		if (!this.player.targetSet)
-            pickTarget();
+        /*
+        if (!this.player.targetSet)
+                pickTarget();
+        */
+
+        for (int i = 0; i < targets.Length; i++)
+        {
+            if (targets[i] == true)
+                this.player.setTarget(allPlayers[i]);
+        }
 	}
 
     /// <summary>

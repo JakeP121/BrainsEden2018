@@ -320,7 +320,7 @@ Transform:
   m_Children:
   - {fileID: 67678000}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &62621641
 MonoBehaviour:
@@ -334,10 +334,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allPlayers:
-  - {fileID: 657427236}
-  - {fileID: 62621638}
   - {fileID: 736085952}
+  - {fileID: 657427236}
   - {fileID: 1376055748}
+  - {fileID: 62621638}
+  targets: 00000000
 --- !u!114 &62621642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,6 +376,7 @@ MonoBehaviour:
   - {fileID: 1308130998242672, guid: 783466a9c16f2914ab66dabd9e86b67c, type: 2}
   - {fileID: 1861963492925452, guid: b44875a3ec3c247458dc59019196018c, type: 2}
   speedOfAnimation: 1
+  currentStance: 
 --- !u!1001 &67677999
 Prefab:
   m_ObjectHideFlags: 0
@@ -2119,10 +2121,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allPlayers:
-  - {fileID: 657427236}
-  - {fileID: 62621638}
   - {fileID: 736085952}
+  - {fileID: 657427236}
   - {fileID: 1376055748}
+  - {fileID: 62621638}
+  targets: 00000000
 --- !u!114 &657427240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2160,6 +2163,7 @@ MonoBehaviour:
   - {fileID: 1308130998242672, guid: 783466a9c16f2914ab66dabd9e86b67c, type: 2}
   - {fileID: 1861963492925452, guid: b44875a3ec3c247458dc59019196018c, type: 2}
   speedOfAnimation: 1
+  currentStance: 
 --- !u!1001 &661235787
 Prefab:
   m_ObjectHideFlags: 0
@@ -2484,10 +2488,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allPlayers:
-  - {fileID: 657427236}
-  - {fileID: 62621638}
   - {fileID: 736085952}
+  - {fileID: 657427236}
   - {fileID: 1376055748}
+  - {fileID: 62621638}
+  targets: 00000000
 --- !u!114 &736085956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2525,6 +2530,7 @@ MonoBehaviour:
   - {fileID: 1308130998242672, guid: 783466a9c16f2914ab66dabd9e86b67c, type: 2}
   - {fileID: 1861963492925452, guid: b44875a3ec3c247458dc59019196018c, type: 2}
   speedOfAnimation: 1
+  currentStance: 
 --- !u!1 &746060671
 GameObject:
   m_ObjectHideFlags: 0
@@ -4186,9 +4192,9 @@ MonoBehaviour:
   gunAccuracy: 1
   pot: 500
   secondsBeforeFiring: 3
-  roundStarted: 0
   splash_Score: {fileID: 0}
-  showingScore: 0
+  gameState: 0
+  purgatorySeconds: 3
 --- !u!4 &1240635039
 Transform:
   m_ObjectHideFlags: 0
@@ -4200,7 +4206,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1241891877
 GameObject:
@@ -4810,10 +4816,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allPlayers:
-  - {fileID: 657427236}
-  - {fileID: 62621638}
   - {fileID: 736085952}
+  - {fileID: 657427236}
   - {fileID: 1376055748}
+  - {fileID: 62621638}
+  targets: 00000000
 --- !u!114 &1376055752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4851,6 +4858,7 @@ MonoBehaviour:
   - {fileID: 1308130998242672, guid: 783466a9c16f2914ab66dabd9e86b67c, type: 2}
   - {fileID: 1861963492925452, guid: b44875a3ec3c247458dc59019196018c, type: 2}
   speedOfAnimation: 1
+  currentStance: 
 --- !u!1 &1386362186 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1727021876662168, guid: c664c9862030176448a7a5e4975fcb96,
@@ -6267,13 +6275,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1830404029}
-  m_LocalRotation: {x: -0, y: 0.9530518, z: -0.30280748, w: 0}
+  m_LocalRotation: {x: 0, y: 0.95305073, z: -0.30281076, w: 0}
   m_LocalPosition: {x: 0, y: 12.28, z: 11.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 35.253002, y: 180.00002, z: 0}
+  m_LocalEulerAnglesHint: {x: 35.253002, y: 180, z: 0}
 --- !u!1 &1835012946
 GameObject:
   m_ObjectHideFlags: 0

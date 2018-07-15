@@ -173,7 +173,7 @@ public class ScoreScreen : MonoBehaviour {
     private void OnDestroy()
     {
         //       gameController.roundStarted = false;
-        gameController.showingScore = false;
+        gameController.startNextRound();
         Debug.Log("Score screen destroyed.");
     }
 

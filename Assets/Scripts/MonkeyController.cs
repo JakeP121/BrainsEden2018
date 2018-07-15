@@ -52,6 +52,8 @@ public class MonkeyController : MonoBehaviour
     /// </summary>
     private Animator anim;
 
+    public string currentStance;
+
     void Start()
     {
         //go to default state
@@ -79,6 +81,8 @@ public class MonkeyController : MonoBehaviour
         //play animation
         anim.Play("Idle");
         if (debug) Debug.Log("Player " + transform.name + " is standing");
+
+        currentStance = "Normal";
     }
 
     /// <summary>
@@ -104,6 +108,8 @@ public class MonkeyController : MonoBehaviour
         //play animation
         anim.Play("Idle");
         if (debug) Debug.Log("Player " + transform.name + " has fired");
+
+        currentStance = "Aftershot";
     }
     /// <summary>
     /// Makes the monkey die
@@ -128,6 +134,8 @@ public class MonkeyController : MonoBehaviour
         //play animation
         anim.Play("Death");
         if (debug) Debug.Log("Player " + transform.name + " has died");
+
+        currentStance = "Death";
     }
 
     /// <summary>
@@ -148,6 +156,8 @@ public class MonkeyController : MonoBehaviour
         //play animation
         anim.Play("Shoot");
         if (debug) Debug.Log("Player " + transform.name + " is shooting left");
+
+        currentStance = "Shoot right";
     }
 
     /// <summary>
@@ -169,6 +179,8 @@ public class MonkeyController : MonoBehaviour
         //play animation
         anim.Play("Shoot");
         if (debug) Debug.Log("Player " + transform.name + " is shooting right");
+
+        currentStance = "Shoot left";
     }
 
     /// <summary>
@@ -196,5 +208,7 @@ public class MonkeyController : MonoBehaviour
         //play animation
         anim.Play(newModel.transform.name.Substring(0, newModel.transform.name.Length - 7));
         if (debug) Debug.Log("Player " + transform.name + " is dancing");
+
+        currentStance = "Dancing";
     }
 }
