@@ -103,6 +103,8 @@ public class Game : MonoBehaviour {
                 if (p.GetComponent<MonkeyController>().currentStance != "Death")
                     p.GetComponent<MonkeyController>().DeathStance();
             }
+            else
+                p.GetComponent<MonkeyController>().Dance();
         }
 
         // OG 1-3 winners
@@ -148,7 +150,7 @@ public class Game : MonoBehaviour {
         }
 
 
-        
+        /*
         GameObject tempSplash = Instantiate(splash_Score);
         GameObject canvas = GameObject.Find("Canvas");
         tempSplash.transform.SetParent(canvas.transform, false);
@@ -182,7 +184,7 @@ public class Game : MonoBehaviour {
 
         tempSplash.GetComponent<ScoreScreen>().gameController = this;
         tempSplash.GetComponent<ScoreScreen>().displayTotals(players[0].points, players[1].points, players[2].points, players[3].points);
-        
+        */
 
 
         round++;
