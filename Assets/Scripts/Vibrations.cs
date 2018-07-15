@@ -46,9 +46,13 @@ public class Vibrations : MonoBehaviour {
     {
         for(int i = 0; i < playerName + 1; i++)
         {
+            this.transform.Find("Spot Light").gameObject.SetActive(true);
             current.SetRumble(160, 160, 0.6f, 100);
-            yield return new WaitForSeconds(0.35f); 
+            yield return new WaitForSeconds(0.20f);
+            this.transform.Find("Spot Light").gameObject.SetActive(false);
+            yield return new WaitForSeconds(0.15f);
         }
+
 
     }
 
