@@ -36,7 +36,10 @@ public class AIPlayer : MonoBehaviour {
         for (int i = 0; i < targets.Length; i++)
         {
             if (targets[i] == true)
+            {
                 this.player.setTarget(allPlayers[i]);
+                targets[i] = false;
+            }
         }
 	}
 

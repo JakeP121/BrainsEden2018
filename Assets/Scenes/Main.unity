@@ -338,7 +338,7 @@ MonoBehaviour:
   - {fileID: 657427236}
   - {fileID: 1376055748}
   - {fileID: 62621638}
-  targets: 00000000
+  targets: 01000000
 --- !u!114 &62621642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,7 +363,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
-  monkeyNormalStance: {fileID: 1386362186}
+  monkeyNormalStance: {fileID: 1727021876662168, guid: c664c9862030176448a7a5e4975fcb96,
+    type: 2}
   monkeyShootingStance: {fileID: 1640424322713760, guid: 93d13f76d72de064f996ac7d96b5ced8,
     type: 2}
   monkeyAftershotStance: {fileID: 1970820170671864, guid: 34506943f1658ef4193ef0e72dabcde4,
@@ -2167,7 +2168,7 @@ MonoBehaviour:
   - {fileID: 657427236}
   - {fileID: 1376055748}
   - {fileID: 62621638}
-  targets: 00000000
+  targets: 01000000
 --- !u!114 &657427240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2192,7 +2193,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
-  monkeyNormalStance: {fileID: 1386362186}
+  monkeyNormalStance: {fileID: 1727021876662168, guid: c664c9862030176448a7a5e4975fcb96,
+    type: 2}
   monkeyShootingStance: {fileID: 1640424322713760, guid: 93d13f76d72de064f996ac7d96b5ced8,
     type: 2}
   monkeyAftershotStance: {fileID: 1970820170671864, guid: 34506943f1658ef4193ef0e72dabcde4,
@@ -2534,7 +2536,7 @@ MonoBehaviour:
   - {fileID: 657427236}
   - {fileID: 1376055748}
   - {fileID: 62621638}
-  targets: 00000000
+  targets: 01000000
 --- !u!114 &736085956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2559,7 +2561,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
-  monkeyNormalStance: {fileID: 1386362186}
+  monkeyNormalStance: {fileID: 1727021876662168, guid: c664c9862030176448a7a5e4975fcb96,
+    type: 2}
   monkeyShootingStance: {fileID: 1640424322713760, guid: 93d13f76d72de064f996ac7d96b5ced8,
     type: 2}
   monkeyAftershotStance: {fileID: 1970820170671864, guid: 34506943f1658ef4193ef0e72dabcde4,
@@ -4862,7 +4865,7 @@ MonoBehaviour:
   - {fileID: 657427236}
   - {fileID: 1376055748}
   - {fileID: 62621638}
-  targets: 00000000
+  targets: 01000000
 --- !u!114 &1376055752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4887,7 +4890,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
-  monkeyNormalStance: {fileID: 1386362186}
+  monkeyNormalStance: {fileID: 1727021876662168, guid: c664c9862030176448a7a5e4975fcb96,
+    type: 2}
   monkeyShootingStance: {fileID: 1640424322713760, guid: 93d13f76d72de064f996ac7d96b5ced8,
     type: 2}
   monkeyAftershotStance: {fileID: 1970820170671864, guid: 34506943f1658ef4193ef0e72dabcde4,
@@ -4901,11 +4905,6 @@ MonoBehaviour:
   - {fileID: 1861963492925452, guid: b44875a3ec3c247458dc59019196018c, type: 2}
   speedOfAnimation: 1
   currentStance: 
---- !u!1 &1386362186 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1727021876662168, guid: c664c9862030176448a7a5e4975fcb96,
-    type: 2}
-  m_PrefabInternal: {fileID: 542341447}
 --- !u!4 &1386362189 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4593985570666436, guid: c664c9862030176448a7a5e4975fcb96,

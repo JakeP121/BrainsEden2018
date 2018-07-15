@@ -104,19 +104,13 @@ public class Game : MonoBehaviour {
                     p.GetComponent<MonkeyController>().DeathStance();
             }
             else
-                p.GetComponent<MonkeyController>().Dance();
+            {
+                if (livingPlayers.Count <= 2)
+                    p.GetComponent<MonkeyController>().Dance();
+                else
+                    p.GetComponent<MonkeyController>().NormalStance();
+            }
         }
-
-        // OG 1-3 winners
-        /*
-        for (int i = 0; i < livingPlayers.Count; i++)
-        {
-            int potDifference = Random.Range(-(pot / 100), pot / 100);
-
-            livingPlayers[i].points += (pot / livingPlayers.Count) + potDifference;
-            livingPlayers[i].pot = (pot / livingPlayers.Count) + potDifference;
-        }
-        */
 
         // New 1-2 winners (3-4 surviving replays)
         if (livingPlayers.Count == 1)
@@ -130,6 +124,7 @@ public class Game : MonoBehaviour {
 
             livingPlayers[0].points += (pot / 2) + potDifference;
             livingPlayers[0].pot = (pot / 2) + potDifference;
+
             livingPlayers[1].points += (pot / 2) - potDifference;
             livingPlayers[1].pot = (pot / 2) - potDifference;
         }

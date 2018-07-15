@@ -52,12 +52,15 @@ public class MonkeyController : MonoBehaviour
     /// </summary>
     private Animator anim;
 
+    Quaternion originalRotation;
+
     public string currentStance;
 
     void Start()
     {
         //go to default state
-        
+
+        originalRotation = transform.rotation;
 
         //DeathStance();
     }
@@ -68,10 +71,10 @@ public class MonkeyController : MonoBehaviour
     public void NormalStance()
     {
         //initialise new model representing the change and removed old character
-        GameObject newModel = Instantiate(monkeyNormalStance, transform.position, Quaternion.Euler(0f, 0f, 0f)) as GameObject;
+        GameObject newModel = Instantiate(monkeyNormalStance, transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f)) as GameObject;
         newModel.transform.parent = transform;
         newModel.transform.localScale = new Vector3(1, 1, 1);
-        newModel.transform.Rotate(new Vector3(0, -180, 0));
+        newModel.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         anim = newModel.GetComponent<Animator>();
         transform.GetChild(0).GetComponent<DestructionCaller>().KillThis();
 
