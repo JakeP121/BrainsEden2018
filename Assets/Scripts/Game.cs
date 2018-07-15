@@ -34,6 +34,8 @@ public class Game : MonoBehaviour {
     public bool showingScore = false;
     public bool showingSplash = false;
 
+    public bool roundStarted;
+
     List<Player> livingPlayers;
 
     private void LateUpdate()
@@ -67,13 +69,6 @@ public class Game : MonoBehaviour {
         if (gameState == State.FIRING)
             monkeysFire();
 
-        if (roundStarted && !waitingForInput)
-            playRound();
-
-        if (!showingSplash && !waitingForInput && !showingScore && !roundStarted)
-        {
-            showScores(livingPlayers);
-        }
     }
 
     private void startRound()
@@ -170,13 +165,10 @@ public class Game : MonoBehaviour {
             Debug.Log("Round " + round + " over!");
             logCurrentLeaderboard();
         }
-
      
         round++;
-        wait(4);
+ //       wait(4);
         roundStarted = false;
-
-        showScores(livingPlayers);
 
     }
 
@@ -215,10 +207,11 @@ public class Game : MonoBehaviour {
     public void showScores()
     {
         showingScore = true;
+
         GameObject tempSplash = Instantiate(splash_Score);
         GameObject canvas = GameObject.Find("Canvas");
         tempSplash.transform.SetParent(canvas.transform, false);
-               Debug.Log("Living players = " + livingPlayers.Count);
+        //       Debug.Log("Living players = " + livingPlayers.Count);
         switch (livingPlayers.Count)
         {
             case 0:
