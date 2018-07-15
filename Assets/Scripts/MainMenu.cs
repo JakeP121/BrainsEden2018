@@ -9,6 +9,8 @@ public class MainMenu : MonoBehaviour {
 	public Scene main;
 	private List<Joycon> joycons;
 	private int idx = 0;
+	public int jc_ind = 0;
+
 
 	// Use this for initialization
 	void Start () {
@@ -25,12 +27,10 @@ public class MainMenu : MonoBehaviour {
 
 	void startGame()
 	{
-		//if (joycons.Count > 0)
-        //{
 			Joycon j;
 			if(Input.anyKeyDown && idx <= 5)
 				idx++;
-			/*
+			
 			for (int i = 0; i < joycons.Count; i++)
 			{
 				j = joycons [i];
@@ -51,8 +51,6 @@ public class MainMenu : MonoBehaviour {
 				else if (j.GetButtonDown(Joycon.Button.CAPTURE))
 					idx++;
 			}
-			*/
-		//}
 	}
 
 	void updateCanvas()
