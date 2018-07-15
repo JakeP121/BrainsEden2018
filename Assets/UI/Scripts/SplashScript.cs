@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SplashScript : MonoBehaviour {
 
     public Text text;
+    public Game gameController;
 
 	public void SetWinner(string name)
     {
@@ -15,6 +16,13 @@ public class SplashScript : MonoBehaviour {
     private void Awake()
     {
         Destroy(this.gameObject, 4);
+    }
+
+    private void OnDestroy()
+    {
+        gameController.showingSplash = false;
+        gameController.showingScore = false;
+        gameController.showScores();
     }
 
 }
