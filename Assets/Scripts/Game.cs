@@ -36,7 +36,7 @@ public class Game : MonoBehaviour {
 
     public bool roundStarted;
 
-    List<Player> livingPlayers;
+    List<Player> livingPlayers = new List<Player>(4);
 
     public AudioClip bang;
 
@@ -76,9 +76,13 @@ public class Game : MonoBehaviour {
 
     private void startRound()
     {
-            for (int i = 0; i < players.Count; i++)
-                players[i].reset();
-
+        for (int i = 0; i < players.Count; i++)
+        {
+            players[i].reset();
+        }
+            //        livingPlayers.Clear();
+        //        livingPlayers.Clear();
+        livingPlayers = new List<Player>();
         gameState = State.WAITING_FOR_INPUT;
     }
 

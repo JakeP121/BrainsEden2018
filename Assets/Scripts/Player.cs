@@ -93,6 +93,9 @@ public class Player : MonoBehaviour
         isAlive = true;
         targetSet = false;
         target = null;
+
+        GetComponent<MonkeyController>().NormalStance();
+        pot = 0;
     }
 
     /// <summary>
