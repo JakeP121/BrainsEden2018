@@ -71,10 +71,9 @@ public class MonkeyController : MonoBehaviour
     public void NormalStance()
     {
         //initialise new model representing the change and removed old character
-        GameObject newModel = Instantiate(monkeyNormalStance, transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f)) as GameObject;
+        GameObject newModel = Instantiate(monkeyNormalStance, transform.position, transform.rotation) as GameObject;
         newModel.transform.parent = transform;
         newModel.transform.localScale = new Vector3(1, 1, 1);
-        newModel.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         anim = newModel.GetComponent<Animator>();
         transform.GetChild(0).GetComponent<DestructionCaller>().KillThis();
 
