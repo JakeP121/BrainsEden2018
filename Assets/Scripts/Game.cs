@@ -36,7 +36,7 @@ public class Game : MonoBehaviour {
 
     public bool roundStarted;
 
-    List<Player> livingPlayers;
+    List<Player> livingPlayers = new List<Player>(4);
 
     public AudioClip bang;
 
@@ -61,6 +61,7 @@ public class Game : MonoBehaviour {
         {
             if (purgatoryTimer > purgatorySeconds)
             {
+                gameState = State.DYING;
                 monkeysDie();
                 purgatoryTimer = 0.0f;
             }
@@ -76,8 +77,12 @@ public class Game : MonoBehaviour {
     private void startRound()
     {
         for (int i = 0; i < players.Count; i++)
+        {
             players[i].reset();
-
+        }
+            //        livingPlayers.Clear();
+        //        livingPlayers.Clear();
+        livingPlayers = new List<Player>();
         gameState = State.WAITING_FOR_INPUT;
     }
 
@@ -86,6 +91,8 @@ public class Game : MonoBehaviour {
     /// </summary>
     private void monkeysFire()
     {
+        Debug.Log("Start round!");
+
         livingPlayers = getLivingPlayers();
 
         for (int i = 0; i < livingPlayers.Count; i++)
@@ -107,6 +114,7 @@ public class Game : MonoBehaviour {
 
     private void monkeysDie()
     {
+        Debug.Log("All shots fired!");
         List<Player> livingPlayers = getLivingPlayers();
         GameObject SFX = GameObject.Find("SFX").gameObject;
         SFX.GetComponent<AudioSource>().PlayOneShot(bang, 1);
@@ -165,10 +173,9 @@ public class Game : MonoBehaviour {
             logCurrentLeaderboard();
         }
      
-        round++;
+  //      round++;
  //       wait(4);
         roundStarted = false;
-
     }
 
     private void showSplash(int p1 = 0, int p2 = 0)

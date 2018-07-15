@@ -75,8 +75,8 @@ public class MonkeyController : MonoBehaviour
         newModel.transform.parent = transform;
         newModel.transform.localScale = new Vector3(1, 1, 1);
         anim = newModel.GetComponent<Animator>();
-        transform.GetChild(0).GetComponent<DestructionCaller>().KillThis();
-
+        transform.GetComponentInChildren<DestructionCaller>().KillThis();
+        //transform.GetChild(1).GetComponent<DestructionCaller>().KillThis();
         //set animation speed
         anim.speed = speedOfAnimation;
 
@@ -102,8 +102,8 @@ public class MonkeyController : MonoBehaviour
 
         //newModel.transform.Rotate(new Vector3(0, -180, 0));
         anim = newModel.GetComponent<Animator>();
-        transform.GetChild(0).GetComponent<DestructionCaller>().KillThis();
-
+        transform.GetComponentInChildren<DestructionCaller>().KillThis();
+        //transform.GetChild(1).GetComponent<DestructionCaller>().KillThis();
         //set animation speed
         anim.speed = speedOfAnimation;
 
@@ -119,7 +119,7 @@ public class MonkeyController : MonoBehaviour
     public void DeathStance()
     {
         //initialise new model representing the change and removed old character
-        GameObject newModel = Instantiate(monkeyDeathStance, transform.position, transform.GetChild(0).localRotation) as GameObject;
+        GameObject newModel = Instantiate(monkeyDeathStance, transform.position, transform.GetChild(1).localRotation) as GameObject;
         newModel.transform.parent = transform;
         newModel.transform.localScale = new Vector3(1, 1, 1);
 
@@ -128,7 +128,8 @@ public class MonkeyController : MonoBehaviour
 
         newModel.transform.Rotate(new Vector3(0, -180 * (Mathf.Abs(newModel.transform.position.z) / 5), 0));
         anim = newModel.GetComponent<Animator>();
-        transform.GetChild(0).GetComponent<DestructionCaller>().KillThis();
+        transform.GetComponentInChildren<DestructionCaller>().KillThis();
+        //transform.GetChild(1).GetComponent<DestructionCaller>().KillThis();
 
         //set animation speed
         anim.speed = speedOfAnimation;
@@ -150,8 +151,8 @@ public class MonkeyController : MonoBehaviour
         newModel.transform.parent = transform;
         newModel.transform.localScale = new Vector3(1, 1, 1);
         anim = newModel.GetComponent<Animator>();
-        transform.GetChild(0).GetComponent<DestructionCaller>().KillThis();
-
+        transform.GetComponentInChildren<DestructionCaller>().KillThis();
+        //transform.GetChild(1).GetComponent<DestructionCaller>().KillThis();
         //set animation speed
         anim.speed = speedOfAnimation;
 
@@ -173,8 +174,8 @@ public class MonkeyController : MonoBehaviour
         newModel.transform.localScale = new Vector3(1, 1, 1);
         newModel.transform.Rotate(new Vector3(0, -180, 0));
         anim = newModel.GetComponent<Animator>();
-        transform.GetChild(0).GetComponent<DestructionCaller>().KillThis();
-
+        transform.GetComponentInChildren<DestructionCaller>().KillThis();
+        //transform.GetChild(1).GetComponent<DestructionCaller>().KillThis();
         //set animation speed
         anim.speed = speedOfAnimation;
 
@@ -197,13 +198,14 @@ public class MonkeyController : MonoBehaviour
         int selectedDance = Random.Range(0, monkeyDances.Length - 1);
 
         //initialise new model representing the change and removed old character
-        GameObject newModel = Instantiate(monkeyDances[selectedDance], transform.position, transform.GetChild(0).rotation) as GameObject;
+        GameObject newModel = Instantiate(monkeyDances[selectedDance], transform.position, transform.GetChild(1).localRotation) as GameObject;
         newModel.transform.parent = transform;
         newModel.transform.localScale = new Vector3(1, 1, 1);
-        newModel.transform.Rotate(new Vector3(0, -180, 0));
+        //newModel.transform.Rotate(new Vector3(0, -180, 0));
+        newModel.transform.Rotate(new Vector3(0, -180 * (Mathf.Abs(newModel.transform.position.z) / 5), 0));
         anim = newModel.GetComponent<Animator>();
-        transform.GetChild(0).GetComponent<DestructionCaller>().KillThis();
-
+        transform.GetComponentInChildren<DestructionCaller>().KillThis();
+        //transform.GetChild(1).GetComponent<DestructionCaller>().KillThis();
         //set animation speed
         anim.speed = speedOfAnimation;
 
