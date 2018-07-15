@@ -15,11 +15,6 @@ public class MainMenu : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		joycons = JoyconManager.Instance.j;
-
-        if (joycons.Count < jc_ind+1){
-            Destroy(gameObject);
-		}
-		
 	}
 	
 	// Update is called once per frame
