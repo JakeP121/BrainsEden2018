@@ -140,6 +140,7 @@ public class Game : MonoBehaviour {
         {
             livingPlayers[0].points += pot;
             livingPlayers[0].pot = pot;
+ //           wait(int.Parse(livingPlayers[0].transform.name));
             showSplash(int.Parse(livingPlayers[0].transform.name));
         }
         else if (livingPlayers.Count == 2)
@@ -151,6 +152,7 @@ public class Game : MonoBehaviour {
 
             livingPlayers[1].points += (pot / 2) - potDifference;
             livingPlayers[1].pot = (pot / 2) - potDifference;
+//            wait(int.Parse(livingPlayers[0].transform.name), int.Parse(livingPlayers[1].transform.name));
             showSplash(int.Parse(livingPlayers[0].transform.name), int.Parse(livingPlayers[1].transform.name));
         }
         else if (livingPlayers.Count >= 3)
@@ -163,6 +165,7 @@ public class Game : MonoBehaviour {
         }
         else
         {
+ //           wait();
             showSplash();
         }
 
@@ -177,9 +180,15 @@ public class Game : MonoBehaviour {
  //       wait(4);
         roundStarted = false;
     }
+    IEnumerator wait (int p1 = 0, int p2 = 0)
+    {
 
+        yield return new WaitForSeconds(5);
+        showSplash(p1, p2);
+    }
     private void showSplash(int p1 = 0, int p2 = 0)
     {
+        
         showingSplash = true;
         showingScore = true;
         if(p2 == 0)
