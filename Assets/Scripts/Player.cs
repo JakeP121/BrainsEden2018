@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     /// <param name="loaded">Should the bullet be blank?</param>
     public void shoot(bool loaded)
     {
-        GetComponent<MonkeyController>().AftershotStance(target.gameObject);
+        GetComponent<AnimController>().AftershotStance(target.gameObject);
 
         if (!loaded)
         {
@@ -45,11 +45,7 @@ public class Player : MonoBehaviour
         else
         {
             if (gameObject == target.gameObject)
-            {
-                GetComponent<MonkeyController>().DeathStance();
-            
-            }
-
+                GetComponent<AnimController>().DeathStance();
 
             if (debugging)
             {
@@ -61,7 +57,7 @@ public class Player : MonoBehaviour
             target.die();
         }
 
-        if (target.GetComponent<AIHandler>() && target.GetComponent<AIHandler>().useAI)
+        if (target.GetComponent<InputHandler>() && target.GetComponent<InputHandler>().useAI)
             target.GetComponent<AIPlayer>().beAimedAt(this); // Show AI that this player tried to shoot them.
 
         target = null;
@@ -94,7 +90,7 @@ public class Player : MonoBehaviour
         targetSet = false;
         target = null;
 
-        GetComponent<MonkeyController>().NormalStance();
+        GetComponent<AnimController>().NormalStance();
         transform.Find("Banana").GetComponent<MeshRenderer>().enabled = false;
         pot = 0;
     }

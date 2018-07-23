@@ -123,15 +123,15 @@ public class Game : MonoBehaviour {
         {
             if (!livingPlayers.Contains(p))
             {
-                if (p.GetComponent<MonkeyController>().currentStance != "Death")
-                    p.GetComponent<MonkeyController>().DeathStance();
+                if (p.GetComponent<AnimController>().currentStance != "Death")
+                    p.GetComponent<AnimController>().DeathStance();
             }
             else
             {
                 if (livingPlayers.Count <= 2)
-                    p.GetComponent<MonkeyController>().Dance();
+                    p.GetComponent<AnimController>().Dance();
                 else
-                    p.GetComponent<MonkeyController>().NormalStance();
+                    p.GetComponent<AnimController>().NormalStance();
             }
         }
 

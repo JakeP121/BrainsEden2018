@@ -123,7 +123,6 @@ GameObject:
   - component: {fileID: 62621640}
   - component: {fileID: 62621639}
   - component: {fileID: 62621638}
-  - component: {fileID: 62621641}
   - component: {fileID: 62621642}
   - component: {fileID: 62621643}
   m_Layer: 0
@@ -177,23 +176,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!114 &62621641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 62621637}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fdb934e84b5afd44907c2440c7d2970, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allPlayers:
-  - {fileID: 736085952}
-  - {fileID: 657427236}
-  - {fileID: 1376055748}
-  - {fileID: 62621638}
-  targets: 00000000
 --- !u!114 &62621642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +187,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf046a35e00e63c429f446ee562e0197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useJoyCon: 0
+  useXbox: 0
   useAI: 0
+  useEditor: 0
 --- !u!114 &62621643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -800,7 +785,6 @@ GameObject:
   - component: {fileID: 657427238}
   - component: {fileID: 657427237}
   - component: {fileID: 657427236}
-  - component: {fileID: 657427239}
   - component: {fileID: 657427240}
   - component: {fileID: 657427241}
   m_Layer: 0
@@ -854,23 +838,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &657427239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 657427235}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fdb934e84b5afd44907c2440c7d2970, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allPlayers:
-  - {fileID: 736085952}
-  - {fileID: 657427236}
-  - {fileID: 1376055748}
-  - {fileID: 62621638}
-  targets: 00000000
 --- !u!114 &657427240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -882,7 +849,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf046a35e00e63c429f446ee562e0197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useJoyCon: 0
+  useXbox: 0
   useAI: 0
+  useEditor: 0
 --- !u!114 &657427241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -983,7 +953,6 @@ GameObject:
   - component: {fileID: 736085954}
   - component: {fileID: 736085953}
   - component: {fileID: 736085952}
-  - component: {fileID: 736085955}
   - component: {fileID: 736085956}
   - component: {fileID: 736085957}
   m_Layer: 0
@@ -1037,23 +1006,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &736085955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 736085951}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fdb934e84b5afd44907c2440c7d2970, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allPlayers:
-  - {fileID: 736085952}
-  - {fileID: 657427236}
-  - {fileID: 1376055748}
-  - {fileID: 62621638}
-  targets: 00000000
 --- !u!114 &736085956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1065,7 +1017,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf046a35e00e63c429f446ee562e0197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useJoyCon: 0
+  useXbox: 0
   useAI: 0
+  useEditor: 0
 --- !u!114 &736085957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1571,7 +1526,6 @@ GameObject:
   - component: {fileID: 1376055750}
   - component: {fileID: 1376055749}
   - component: {fileID: 1376055748}
-  - component: {fileID: 1376055751}
   - component: {fileID: 1376055752}
   - component: {fileID: 1376055753}
   m_Layer: 0
@@ -1625,23 +1579,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &1376055751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1376055747}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fdb934e84b5afd44907c2440c7d2970, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allPlayers:
-  - {fileID: 736085952}
-  - {fileID: 657427236}
-  - {fileID: 1376055748}
-  - {fileID: 62621638}
-  targets: 00000000
 --- !u!114 &1376055752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1653,7 +1590,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf046a35e00e63c429f446ee562e0197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useJoyCon: 0
+  useXbox: 0
   useAI: 0
+  useEditor: 0
 --- !u!114 &1376055753
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@
 /// <summary>
 /// Allows other scripts to control how the monkey is being animated 
 /// </summary>
-public class MonkeyController : MonoBehaviour
+public class AnimController : MonoBehaviour
 {
     /// <summary>
     /// Flags whether the code should print out debug logs
@@ -52,18 +52,7 @@ public class MonkeyController : MonoBehaviour
     /// </summary>
     private Animator anim;
 
-    Quaternion originalRotation;
-
     public string currentStance;
-
-    void Start()
-    {
-        //go to default state
-
-        originalRotation = transform.rotation;
-
-        //DeathStance();
-    }
 
     /// <summary>
     /// Makes the monkey jump to a normal stance

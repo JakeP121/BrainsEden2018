@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AIPlayer : MonoBehaviour {
 
-    public List<Player> allPlayers;
+    private List<Player> allPlayers = new List<Player>();
 
     private Dictionary<Player, float> distrust = new Dictionary<Player, float>();
 
@@ -12,35 +12,24 @@ public class AIPlayer : MonoBehaviour {
 
     private bool debugging = false;
 
-    public bool[] targets = new bool[4];
-
-
 	// Use this for initialization
 	void Start () {
         player = GetComponent<Player>();
 
-        for (int i = 0; i < allPlayers.Count; i++)
+        for (int i = 1; i <= 4; i++)
         {
-            distrust.Add(allPlayers[i], 100.0f);
+            allPlayers.Add(GameObject.Find(i.ToString()).GetComponent<Player>());
+            distrust.Add(allPlayers[i - 1], 100.0f);
         }
+
         distrust[this.player] = 25.0f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        /*
+        
         if (!this.player.targetSet)
                 pickTarget();
-        */
-
-        for (int i = 0; i < targets.Length; i++)
-        {
-            if (targets[i] == true)
-            {
-                this.player.setTarget(allPlayers[i]);
-                targets[i] = false;
-            }
-        }
 	}
 
     /// <summary>
