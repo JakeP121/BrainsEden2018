@@ -40,6 +40,13 @@ public class Game : MonoBehaviour {
 
     public AudioClip bang;
 
+
+    private void Start()
+    {
+        for (int i = 0; i < Input.GetJoystickNames().Length; i++)
+            Debug.Log(Input.GetJoystickNames()[i]);
+    }
+
     private void LateUpdate()
     {
         if (gameState == State.GAMEOVER)
@@ -94,9 +101,6 @@ public class Game : MonoBehaviour {
         Debug.Log("Start round!");
 
         livingPlayers = getLivingPlayers();
-
-        for (int i = 0; i < livingPlayers.Count; i++)
-            players[i].draw();
 
         // Roll for duds
         for (int i = 0; i < livingPlayers.Count; i++)

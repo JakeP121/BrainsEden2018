@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useJoyCon: 0
-  useXbox: 0
+  useXbox: 1
   useAI: 0
   useEditor: 0
 --- !u!114 &62621643
@@ -850,7 +850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useJoyCon: 0
-  useXbox: 0
+  useXbox: 1
   useAI: 0
   useEditor: 0
 --- !u!114 &657427241
@@ -1018,7 +1018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useJoyCon: 0
-  useXbox: 0
+  useXbox: 1
   useAI: 0
   useEditor: 0
 --- !u!114 &736085957
@@ -1280,6 +1280,11 @@ Prefab:
     - target: {fileID: 4942289701557472, guid: 9e7f7629762c5d34eb4473459e0839c1, type: 2}
       propertyPath: m_RootOrder
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 82707918840097458, guid: 9e7f7629762c5d34eb4473459e0839c1,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e7f7629762c5d34eb4473459e0839c1, type: 2}
@@ -1591,7 +1596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useJoyCon: 0
-  useXbox: 0
+  useXbox: 1
   useAI: 0
   useEditor: 0
 --- !u!114 &1376055753

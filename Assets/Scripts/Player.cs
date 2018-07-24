@@ -17,14 +17,6 @@ public class Player : MonoBehaviour
     private bool debugging = false;
 
     /// <summary>
-    /// Plays animation to show who the player aimed at
-    /// </summary>
-    public void draw()
-    {
-        // Not implemented
-    }
-
-    /// <summary>
     /// The player shoots their banana
     /// </summary>
     /// <param name="loaded">Should the bullet be blank?</param>
